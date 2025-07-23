@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project: Gamified Mental Health Screening</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #0284c7; 
+        }
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header id="header" class="bg-slate-50/80 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-sky-700">Capstone Project</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#vision" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Vision</a>
+                        <a href="#science" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">The Science</a>
+                        <a href="#game" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">The Game</a>
+                        <a href="#methodology" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Methodology</a>
+                        <a href="#timeline" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Timeline</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="vision" class="py-20 md:py-28">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-800">Predicting Anxiety & Depression Through Gameplay Analytics</h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">An innovative approach to mental health screening, evolving from proven research to create an engaging, implicit, and impactful diagnostic tool.</p>
+                <div class="mt-8 text-sm text-slate-500">
+                    <p><strong>M PAVITHRA [CH.SC.U4CSE23120]</strong> | Machine Learning - 23CSE301</p>
+                    <p>Dr. S. S. Chakravarthi & Dr. J. Umamageswaran</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="science" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">The Scientific Foundation</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">Our project is built upon the findings of "A Machine Learning Approach for Anxiety and Depression Prediction Using PROMIS® Questionnaires" (Vitória et al., 2024), which demonstrated the high efficacy of ML models in this domain.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="prose prose-lg text-slate-600">
+                        <h3>Key Findings from the Base Paper</h3>
+                        <p>The research compared several supervised learning models to predict anxiety and depression scores from questionnaire data. The key takeaway was the superior performance of a neural network approach.</p>
+                        <ul>
+                            <li>A **Multi-layer Perceptron (MLP)** model proved most effective, especially for the complex patterns in depression data.</li>
+                            <li>The model achieved an average **Mean Absolute Percentage Error (MAPE) of 6.31%**.</li>
+                            <li>It also yielded a high **R² value of 0.76**, indicating it could explain 76% of the variance in the scores.</li>
+                        </ul>
+                        <p>This chart visualizes the comparative performance, highlighting why the MLP is our chosen primary learning technique. Hover over the bars to see the R² scores for each model.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="modelComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="game" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">The Core Innovation: Gamification</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">We propose moving beyond static questionnaires. By creating a game, we can gather more natural behavioral data through implicit observation, making the screening process more engaging and potentially more accurate.</p>
+                </div>
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-slate-800 text-center mb-2">Feature Mapping: From Concept to Gameplay</h3>
+                    <p class="text-center text-slate-600 mb-8">This is how we translate psychological concepts into measurable in-game actions. Click on a card to see the details.</p>
+                    <div id="feature-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="methodology" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">Project Methodology</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">Our approach is a two-part process: first, creating a unique dataset, and second, training our predictive models on that data.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-6 text-center">1. Dataset Creation</h3>
+                        <div class="flex flex-col items-center space-y-4">
+                            <div class="w-full p-6 bg-slate-100 rounded-lg shadow-sm text-center">
+                                <h4 class="font-semibold text-sky-700">Step 1: Game Data Collection (Features 'X')</h4>
+                                <p class="mt-2 text-sm">Volunteer participants play the game. The backend silently logs behavioral metrics like reaction times, choices, and resource usage.</p>
+                            </div>
+                            <div class="text-3xl text-slate-400">↓</div>
+                            <div class="w-full p-6 bg-slate-100 rounded-lg shadow-sm text-center">
+                                <h4 class="font-semibold text-sky-700">Step 2: Ground Truth Collection (Labels 'y')</h4>
+                                <p class="mt-2 text-sm">After gameplay, the same participants complete the official PROMIS® questionnaires. The resulting scores provide the ground truth for training.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-6 text-center">2. Model Training</h3>
+                        <div class="space-y-6">
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-sky-700">Primary Technique: MLP</h4>
+                                <p class="mt-2 text-sm">We will use a Multi-layer Perceptron, justified by its superior performance in the base paper for capturing complex, non-linear patterns.</p>
+                            </div>
+                            <div class="p-6 bg-slate-100 rounded-lg shadow-sm">
+                                <h4 class="font-semibold text-sky-700">Comparative Models</h4>
+                                <p class="mt-2 text-sm">We will also implement Random Forest and Gradient Boosting models to benchmark our MLP's performance, ensuring a rigorous, comparative analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="py-20">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">Project Timeline</h2>
+                    <p class="mt-4 text-lg text-slate-600">All milestones and deadlines adhere to the official course schedule.</p>
+                </div>
+                <div class="mt-16">
+                    <div class="relative">
+                        <div class="absolute left-1/2 -ml-px w-0.5 h-full bg-slate-300" aria-hidden="true"></div>
+                        <div class="relative pt-4">
+                            <div class="flex items-center mb-12">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="font-bold text-sky-700">Before 27-Aug-2025</div>
+                                    <p class="text-slate-600">Phase 2: Feature Selection & Learning Technique ID</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-sky-600 inline-flex items-center justify-center text-white font-bold absolute left-1/2 -ml-5">1</div>
+                                <div class="w-1/2"></div>
+                            </div>
+                            <div class="flex items-center flex-row-reverse mb-12">
+                                <div class="w-1/2 pl-8 text-left">
+                                    <div class="font-bold text-sky-700">September 2025</div>
+                                    <p class="text-slate-600">Data Collection & Preprocessing</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-sky-600 inline-flex items-center justify-center text-white font-bold absolute left-1/2 -ml-5">2</div>
+                                <div class="w-1/2"></div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="font-bold text-sky-700">Before 15-Oct-2025</div>
+                                    <p class="text-slate-600">Phase 3: Final Model Training, Evaluation & Report</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-sky-600 inline-flex items-center justify-center text-white font-bold absolute left-1/2 -ml-5">3</div>
+                                <div class="w-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            <p>&copy; 2025 [Your Name] - Machine Learning Capstone Project</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const chartCtx = document.getElementById('modelComparisonChart').getContext('2d');
+            const modelData = {
+                labels: ['MLP', 'Random Forest', 'SVM', 'Gradient Boosting', 'Decision Tree'],
+                datasets: [{
+                    label: 'R² Score (Higher is Better)',
+                    data: [0.76, 0.67, 0.63, 0.65, 0.46], 
+                    backgroundColor: 'rgba(2, 132, 199, 0.6)', // sky-600 with opacity
+                    borderColor: 'rgba(2, 132, 199, 1)', // sky-600
+                    borderWidth: 1,
+                    borderRadius: 4,
+                }]
+            };
+            
+            new Chart(chartCtx, {
+                type: 'bar',
+                data: modelData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'R² Score'
+                            }
+                        },
+                        x: {
+                           grid: {
+                                display: false
+                           }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y.toFixed(2);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const featureData = [
+                { 
+                    concept: "Emotional State",
+                    details: "Feeling anxious, depressed or irritable",
+                    mechanic: "Time-pressure puzzle or reaction-based mini-game.",
+                    metrics: "Reaction Time, Error Rate, Hesitation before action."
+                },
+                { 
+                    concept: "Fatigue & Energy",
+                    details: "General clinical symptoms like weakness, tiredness",
+                    mechanic: "In-game 'Energy' or 'Stamina' resource management.",
+                    metrics: "Choice of low-effort vs. high-effort tasks, frequency of 'rest' actions."
+                },
+                { 
+                    concept: "Social Engagement",
+                    details: "Ability to carry out frequent social activities",
+                    mechanic: "Narrative game with branching dialogue choices.",
+                    metrics: "Frequency of interacting with NPCs vs. choosing solitary actions."
+                },
+                { 
+                    concept: "Physical Ability",
+                    details: "Ability to perform daily physical activities",
+                    mechanic: "Mini-games requiring dexterity and coordination.",
+                    metrics: "Success rate, time to completion, number of attempts."
+                }
+            ];
+
+            const featureGrid = document.getElementById('feature-grid');
+            featureData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'feature-card bg-white p-6 rounded-lg shadow-md';
+                card.innerHTML = `
+                    <div class="front">
+                        <h4 class="text-xl font-semibold text-slate-800">${item.concept}</h4>
+                        <p class="mt-2 text-slate-500">${item.details}</p>
+                        <p class="mt-4 text-sm font-medium text-sky-600">Click to see gameplay mechanics</p>
+                    </div>
+                    <div class="back hidden">
+                        <h5 class="font-semibold text-sky-700">Game Mechanic</h5>
+                        <p class="mt-1 text-sm">${item.mechanic}</p>
+                        <h5 class="mt-4 font-semibold text-sky-700">Metrics to Collect</h5>
+                        <p class="mt-1 text-sm">${item.metrics}</p>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    card.querySelector('.front').classList.toggle('hidden');
+                    card.querySelector('.back').classList.toggle('hidden');
+                });
+                featureGrid.appendChild(card);
+            });
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
