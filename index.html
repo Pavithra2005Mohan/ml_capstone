@@ -9,11 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Chosen Palette: Calm Tech Neutrals -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky navigation header. The structure is thematic rather than linear, with sections for Vision, The Science (base paper), The Game (feature mapping), Methodology, and Timeline. This non-linear navigation allows users (faculty) to jump to specific areas of interest while the vertical flow provides a natural storytelling progression. This design was chosen to make a dense project proposal more digestible and engaging than a static document or slide deck. Key interactions include a dynamic bar chart for model comparison and a clickable grid for exploring the feature mapping concept. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Base paper model performance (MLP, RF, GB, etc.). Goal: Compare. Viz: Bar Chart (Chart.js). Interaction: Hover tooltips for precise values. Justification: A bar chart is the clearest way to compare the performance of discrete models, visually justifying the choice of MLP.
+        - Report Info: Feature Mapping table. Goal: Organize & Explain. Viz: Interactive HTML Grid. Interaction: Click to reveal details. Justification: An interactive grid prevents information overload and encourages user exploration of the core project concept (mapping questionnaire items to game mechanics).
+        - Report Info: Dataset Creation process. Goal: Explain a process. Viz: HTML/CSS Flowchart. Interaction: Static. Justification: A simple visual flowchart is more intuitive for understanding a two-step process than plain text.
+        - Report Info: Project Timeline. Goal: Show change over time. Viz: HTML/CSS Vertical Timeline. Interaction: Static. Justification: A visual timeline provides a quick, scannable overview of project milestones and deadlines.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* slate-50 */
         }
         .chart-container {
             position: relative;
@@ -33,7 +41,7 @@
             transition: color 0.3s;
         }
         .nav-link:hover {
-            color: #0284c7; 
+            color: #0284c7; /* sky-600 */
         }
         .feature-card {
             transition: transform 0.3s, box-shadow 0.3s;
@@ -42,6 +50,12 @@
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .btn {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -60,6 +74,7 @@
                         <a href="#game" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">The Game</a>
                         <a href="#methodology" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Methodology</a>
                         <a href="#timeline" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Timeline</a>
+                        <a href="#prototype" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Prototype</a>
                     </div>
                 </div>
             </div>
@@ -71,8 +86,9 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-800">Predicting Anxiety & Depression Through Gameplay Analytics</h1>
                 <p class="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">An innovative approach to mental health screening, evolving from proven research to create an engaging, implicit, and impactful diagnostic tool.</p>
+                
                 <div class="mt-8 text-sm text-slate-500">
-                    <p><strong>M PAVITHRA [CH.SC.U4CSE23120]</strong> | Machine Learning - 23CSE301</p>
+                    <p><strong>M. PAVITHRA[CH.SC.U4CSE23120]</strong> | Machine Learning - 23CSE301</p>
                     <p>Dr. S. S. Chakravarthi & Dr. J. Umamageswaran</p>
                 </div>
             </div>
@@ -194,11 +210,23 @@
                 </div>
             </div>
         </section>
+
+        <section id="prototype" class="py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">Try the Prototype</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">The best way to understand the project is to experience it. The "Mindful Play" game suite is a functional prototype that collects behavioral data and saves it to a live database.</p>
+                <div class="mt-10">
+                    <a href="https://ml-game-tau.vercel.app/" target="_blank" class="btn bg-emerald-600 text-white font-bold py-4 px-8 rounded-lg shadow-md hover:bg-emerald-700">
+                        🚀 Launch Game Prototype
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            <p>&copy; 2025 M PAVITHRA [CH.SC.U4CSEE23120] - Machine Learning Capstone Project</p>
+            <p>&copy; 2025 M. PAVITHRA[CH.SC.U4CSE23120] - Machine Learning Capstone Project</p>
         </div>
     </footer>
 
