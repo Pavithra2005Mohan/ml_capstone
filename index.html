@@ -8,10 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Chosen Palette: Cyberpunk Dark -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky navigation header. The structure is thematic, following a 10-section presentation format. This allows users (faculty) to jump to specific areas of interest while the vertical flow provides a natural storytelling progression from problem to solution. This design was chosen to make a dense project proposal more digestible and engaging than a static document. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Project Architecture. Goal: Organize & Explain. Viz: HTML/CSS Diagram. Interaction: Static. Justification: A simple visual flowchart is more intuitive for understanding the project's technical workflow (Game -> Firebase -> Colab -> Model) than plain text.
+        - Report Info: Tech Stack. Goal: Inform. Viz: HTML/CSS Grid with logos. Interaction: Static. Justification: A visual grid of technologies used provides a quick and professional overview of the project's technical foundation.
+        - Report Info: Literature Review References. Goal: Inform. Viz: Formatted Text. Interaction: Static. Justification: Proper IEEE formatting for references is a key academic requirement and is best presented as clear, readable text.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -82,11 +90,17 @@
                 content: '↓';
             }
         }
-        .modal-overlay {
-            transition: opacity 0.3s ease-in-out;
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
         }
-        .modal-content {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        .tech-icon {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tech-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -94,10 +108,11 @@
 
     <canvas id="hero-canvas"></canvas>
 
-    <header id="header" class="bg-slate-950/80 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300 border-b border-slate-800">
+    <header id="header" class="bg-transparent fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.9o6qBZMtI68yyybjVAzm9wAAAA?pid=Api&P=0&h=180" alt="Amrita Logo" class="h-8 w-auto mr-4">
                     <span class="font-bold text-xl text-sky-400 glow-text">Capstone Project</span>
                 </div>
                 <div class="hidden md:flex items-center">
@@ -113,7 +128,7 @@
                         <a href="#references" class="nav-link px-2 py-2 rounded-md text-sm font-medium">References</a>
                         <a href="#prototype" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Prototype</a>
                     </div>
-                     <button id="say-hello-btn" class="ml-6 btn bg-amber-400 text-black font-bold py-2 px-4 rounded-full text-sm">Say Hello</button>
+                     <a href="mailto:pavi261105@gmail.com" class="ml-6 btn bg-amber-400 text-black font-bold py-2 px-4 rounded-full text-sm">Say Hello</a>
                 </div>
             </div>
         </nav>
@@ -162,12 +177,18 @@
 
         <!-- 4th Slide: Literature Review -->
         <section id="literature" class="bg-slate-950/80 backdrop-blur-sm">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Literature Review</h2>
-                <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-                    <p>Our work builds upon a strong foundation of existing research. The core inspiration is the study by **Vitória et al. (2024)** [1], which successfully used an MLP model to predict anxiety and depression from questionnaire data. Our project innovates by replacing direct questioning with implicit data gathered from gameplay.</p>
-                    <p>The validity of using gameplay data is supported by multiple studies. For instance, **Al-Saggaf et al. (2024)** [2] demonstrated over 93% accuracy in detecting depression and anxiety markers by analyzing game logs. This confirms that behavioral patterns during play can be powerful predictors. Furthermore, a meta-analysis by **Fleming et al. (2017)** [3] showed that "serious games" can have significant positive effects on mental health, validating gamification as an effective methodology.</p>
-                    <p>From a technical and ethical perspective, our project aligns with modern best practices. The system architecture is informed by similar AI-driven health platforms, such as the one developed by **Alves et al. (2024)** [4], ensuring a scalable design. We also adhere to the ethical guidelines for digital mental health tools outlined by **Torous et al. (2021)** [5], prioritizing user privacy and data security.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-left" style="transition-delay: 200ms;">
+                        <p>Our work builds upon a strong foundation of existing research. The core inspiration is the study by **Vitória et al. (2024)** [1], which successfully used an MLP model to predict anxiety and depression from questionnaire data. Our project innovates by replacing direct questioning with implicit data gathered from gameplay.</p>
+                        <p>The validity of using gameplay data is supported by multiple studies. For instance, **Al-Saggaf et al. (2024)** [2] demonstrated over 93% accuracy in detecting depression and anxiety markers by analyzing game logs. This confirms that behavioral patterns during play can be powerful predictors. Furthermore, a meta-analysis by **Fleming et al. (2017)** [3] showed that "serious games" can have significant positive effects on mental health, validating gamification as an effective methodology.</p>
+                    </div>
+                    <div id="chart-wrapper" class="animate-on-scroll fade-in-right" style="transition-delay: 400ms;">
+                         <div class="chart-container">
+                            <canvas id="modelComparisonChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -289,21 +310,6 @@
             <p>&copy; 2025 M. PAVITHRA [CH.SC.U4CSE23120] - Machine Learning Capstone Project</p>
         </div>
     </footer>
-    
-    <!-- Contact Modal -->
-    <div id="contact-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 modal-overlay">
-        <div class="bg-slate-800 border border-slate-700 rounded-lg shadow-xl p-8 w-full max-w-md text-center scale-95 opacity-0 modal-content">
-            <h3 class="text-2xl font-bold text-white">Contact Information</h3>
-            <p class="mt-4 text-slate-300">You can reach out via the email address below.</p>
-            <div class="mt-6 p-3 bg-slate-900 rounded-lg border border-slate-700 font-mono text-sky-300">
-                pavi261105@gmail.com
-            </div>
-            <div class="mt-6 flex gap-4">
-                <button id="copy-email-btn" class="btn bg-sky-500 text-white font-bold py-2 px-4 rounded-lg w-full">Copy Email</button>
-                <button id="close-modal-btn" class="btn bg-slate-600 text-white font-bold py-2 px-4 rounded-lg w-full">Close</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -396,51 +402,69 @@
                 }
             });
 
-            // Contact Modal Logic
-            const modal = document.getElementById('contact-modal');
-            const modalOverlay = modal;
-            const modalContent = modal.querySelector('.modal-content');
-            const sayHelloBtn = document.getElementById('say-hello-btn');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            const copyEmailBtn = document.getElementById('copy-email-btn');
-
-            const openModal = () => {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modalOverlay.classList.remove('opacity-0');
-                    modalContent.classList.remove('opacity-0', 'scale-95');
-                }, 10);
+            const chartCtx = document.getElementById('modelComparisonChart').getContext('2d');
+            const modelData = {
+                labels: ['MLP', 'Random Forest', 'SVM', 'Gradient Boosting', 'Decision Tree'],
+                datasets: [{
+                    label: 'R² Score',
+                    data: [0.76, 0.67, 0.63, 0.65, 0.46], 
+                    backgroundColor: 'rgba(56, 189, 248, 0.6)',
+                    borderColor: 'rgba(56, 189, 248, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                }]
             };
-
-            const closeModal = () => {
-                modalOverlay.classList.add('opacity-0');
-                modalContent.classList.add('opacity-0', 'scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            };
-
-            sayHelloBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) {
-                    closeModal();
+            
+            new Chart(chartCtx, {
+                type: 'bar',
+                data: modelData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'R² Score',
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#9ca3af'
+                            }
+                        },
+                        x: {
+                           grid: {
+                                display: false
+                           },
+                           ticks: {
+                                color: '#9ca3af'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y.toFixed(2);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
                 }
-            });
-
-            copyEmailBtn.addEventListener('click', () => {
-                const email = 'pavi261105@gmail.com';
-                const textArea = document.createElement('textarea');
-                textArea.value = email;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                copyEmailBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyEmailBtn.textContent = 'Copy Email';
-                }, 2000);
             });
         });
     </script>
