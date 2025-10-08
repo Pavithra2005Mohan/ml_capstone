@@ -9,17 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Cyberpunk Dark -->
-    <!-- Application Structure Plan: A single-page, vertical scrolling application with a sticky navigation header. The structure is thematic, following a 10-section presentation format. This allows users (faculty) to jump to specific areas of interest while the vertical flow provides a natural storytelling progression from problem to solution. This design was chosen to make a dense project proposal more digestible and engaging than a static document. -->
-    <!-- Visualization & Content Choices: 
-        - Report Info: Project Architecture. Goal: Organize & Explain. Viz: HTML/CSS Diagram. Interaction: Static. Justification: A simple visual flowchart is more intuitive for understanding the project's technical workflow (Game -> Firebase -> Colab -> Model) than plain text.
-        - Report Info: Tech Stack. Goal: Inform. Viz: HTML/CSS Grid with logos. Interaction: Static. Justification: A visual grid of technologies used provides a quick and professional overview of the project's technical foundation.
-        - Report Info: Literature Review References. Goal: Inform. Viz: Formatted Text. Interaction: Static. Justification: Proper IEEE formatting for references is a key academic requirement and is best presented as clear, readable text.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -73,6 +66,15 @@
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
+        .module-card {
+             background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
+             backdrop-filter: blur(12px);
+             border: 1px solid rgba(51, 65, 85, 0.7);
+        }
+         .module-card:hover {
+            border: 1px solid rgba(125, 211, 252, 0.5);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+        }
         .glow-text {
             text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
         }
@@ -112,23 +114,22 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.9o6qBZMtI68yyybjVAzm9wAAAA?pid=Api&P=0&h=180" alt="Amrita Logo" class="h-8 w-auto mr-4">
+                    <img src="https://www.amrita.edu/wp-content/uploads/2020/12/amrita-logo-english-1.png" alt="Amrita Logo" class="h-10 w-auto mr-4">
                     <span class="font-bold text-xl text-sky-400 glow-text">Capstone Project</span>
                 </div>
                 <div class="hidden md:flex items-center">
                     <div class="ml-10 flex items-baseline space-x-3">
-                        <a href="#problem" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Problem</a>
-                        <a href="#motivation" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Motivation</a>
-                        <a href="#literature" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Review</a>
-                        <a href="#objective" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Objective</a>
-                        <a href="#tech-stack" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Stack</a>
-                        <a href="#architecture" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Architecture</a>
-                        <a href="#modules" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Modules</a>
-                        <a href="#conclusion" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Conclusion</a>
-                        <a href="#references" class="nav-link px-2 py-2 rounded-md text-sm font-medium">References</a>
-                        <a href="#prototype" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Prototype</a>
+                         <a href="#problem" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Problem</a>
+                         <a href="#objective" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Objective</a>
+                         <a href="#literature" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Review</a>
+                         <a href="#data-collection" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Data Pipeline</a>
+                         <a href="#modules" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Modules</a>
+                         <a href="#tech-stack" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Stack</a>
+                         <a href="#architecture" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Architecture</a>
+                         <a href="#references" class="nav-link px-2 py-2 rounded-md text-sm font-medium">References</a>
+                         <a href="#prototype" class="nav-link px-2 py-2 rounded-md text-sm font-medium">Prototype</a>
                     </div>
-                     <a href="mailto:pavi261105@gmail.com" class="ml-6 btn bg-amber-400 text-black font-bold py-2 px-4 rounded-full text-sm">Say Hello</a>
+                   <a href="mailto:pavi261105@gmail.com" class="ml-6 btn bg-amber-400 text-black font-bold py-2 px-4 rounded-full text-sm">Say Hello</a>
                 </div>
             </div>
         </nav>
@@ -159,41 +160,7 @@
             </div>
         </section>
         
-        <!-- 3rd Slide: Motivation -->
-        <section id="motivation">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Motivation</h2>
-                <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-                    <p>The motivation for this project is to bridge the gap between clinical assessment and public engagement in mental health screening. By transforming the data collection process into a series of engaging mini-games, we aim to:</p>
-                    <ul class="animate-on-scroll fade-in-up" style="transition-delay: 400ms;">
-                        <li><strong>Increase Engagement:</strong> Create a non-intimidating experience that users are more likely to complete.</li>
-                        <li><strong>Gather Implicit Data:</strong> Capture natural behavioral patterns as proxies for mental state.</li>
-                        <li><strong>Promote Early Detection:</strong> Develop a scalable tool to encourage individuals to seek professional help sooner.</li>
-                        <li><strong>Innovate in Digital Health:</strong> Apply modern web tech, ML, and AI to a significant healthcare challenge.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4th Slide: Literature Review -->
-        <section id="literature" class="bg-slate-950/80 backdrop-blur-sm">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Literature Review</h2>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-left" style="transition-delay: 200ms;">
-                        <p>Our work builds upon a strong foundation of existing research. The core inspiration is the study by **Vitória et al. (2024)** [1], which successfully used an MLP model to predict anxiety and depression from questionnaire data. Our project innovates by replacing direct questioning with implicit data gathered from gameplay.</p>
-                        <p>The validity of using gameplay data is supported by multiple studies. For instance, **Al-Saggaf et al. (2024)** [2] demonstrated over 93% accuracy in detecting depression and anxiety markers by analyzing game logs. This confirms that behavioral patterns during play can be powerful predictors. Furthermore, a meta-analysis by **Fleming et al. (2017)** [3] showed that "serious games" can have significant positive effects on mental health, validating gamification as an effective methodology.</p>
-                    </div>
-                    <div id="chart-wrapper" class="animate-on-scroll fade-in-right" style="transition-delay: 400ms;">
-                         <div class="chart-container">
-                            <canvas id="modelComparisonChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5th Slide: Objective -->
+        <!-- Objective Section -->
         <section id="objective">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Objective</h2>
@@ -210,27 +177,165 @@
             </div>
         </section>
 
-        <!-- 6th Slide: Tech Stack -->
-        <section id="tech-stack" class="bg-slate-900/80 backdrop-blur-sm">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Technology Stack</h2>
-                <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 100ms;"><div class="h-24 w-24 rounded-full shadow-md bg-red-500 flex items-center justify-center text-white font-bold text-4xl tech-icon">H5</div><p class="mt-2 font-semibold">HTML5</p></div>
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 200ms;"><div class="h-24 w-24 rounded-full shadow-md bg-blue-500 flex items-center justify-center text-white font-bold text-4xl tech-icon">C3</div><p class="mt-2 font-semibold">CSS3</p></div>
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 300ms;"><div class="h-24 w-24 rounded-full shadow-md bg-yellow-400 flex items-center justify-center text-black font-bold text-4xl tech-icon">JS</div><p class="mt-2 font-semibold">JavaScript</p></div>
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 400ms;"><div class="h-24 w-24 rounded-full shadow-md bg-amber-400 flex items-center justify-center text-white font-bold text-2xl tech-icon">Firebase</div><p class="mt-2 font-semibold">Firebase</p></div>
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 500ms;"><div class="h-24 w-24 rounded-full shadow-md bg-purple-600 flex items-center justify-center text-white font-bold text-2xl tech-icon">Gemini</div><p class="mt-2 font-semibold">Gemini API</p></div>
-                    <div class="flex flex-col items-center animate-on-scroll zoom-in" style="transition-delay: 600ms;"><div class="h-24 w-24 rounded-full shadow-md bg-orange-500 flex items-center justify-center text-white font-bold text-2xl tech-icon">Colab</div><p class="mt-2 font-semibold">Google Colab</p></div>
+        <!-- Literature Review -->
+        <section id="literature" class="bg-slate-950/80 backdrop-blur-sm">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Literature Review</h2>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="prose prose-lg text-slate-300 max-w-none animate-on-scroll" style="transition-delay: 200ms;">
+                        <p>Our work builds upon a strong foundation of existing research. The core inspiration is the study by **Vitória et al. (2024)** [1], which successfully used an MLP model to predict anxiety and depression from questionnaire data. Our project innovates by replacing direct questioning with implicit data gathered from gameplay.</p>
+                        <p>The validity of using gameplay data is supported by multiple studies. For instance, **Al-Saggaf et al. (2024)** [2] demonstrated over 93% accuracy in detecting depression and anxiety markers by analyzing game logs. This confirms that behavioral patterns during play can be powerful predictors. Furthermore, a meta-analysis by **Fleming et al. (2017)** [3] showed that "serious games" can have significant positive effects on mental health, validating gamification as an effective methodology.</p>
+                    </div>
+                    <div id="chart-wrapper" class="animate-on-scroll" style="transition-delay: 400ms;">
+                         <div class="chart-container">
+                            <canvas id="modelComparisonChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 7th Slide: Architecture Diagram -->
-        <section id="architecture">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Architecture Diagram</h2>
+        <!-- Data Collection Pipeline Section -->
+        <section id="data-collection">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Data Collection Pipeline</h2>
+                <p class="mt-4 text-center text-slate-400 max-w-3xl mx-auto animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                    To make accurate predictions, we need clean, well-structured data. Our pipeline is designed to transform every user interaction into a format ready for machine learning.
+                </p>
                 <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-                    <div class="p-6 rounded-lg shadow-lg w-48 animate-on-scroll fade-in-left glass-card" style="transition-delay: 200ms;"><h3 class="font-bold">1. Mindful Play Game</h3><p class="text-sm">User plays games, generating behavioral data.</p></div>
+                    <div class="p-6 rounded-lg w-52 animate-on-scroll fade-in-left glass-card flex flex-col items-center" style="transition-delay: 200ms;">
+                        <i data-lucide="mouse-pointer-click" class="w-12 h-12 text-sky-400 mb-3"></i>
+                        <h3 class="font-bold">1. Raw Interaction</h3>
+                        <p class="text-sm text-slate-400 mt-1">Every click, choice, and reaction time is captured as a raw event in the HTML/JavaScript frontend.</p>
+                    </div>
+                    <div class="arch-arrow p-2 animate-on-scroll fade-in-up" style="transition-delay: 300ms;"></div>
+                    <div class="p-6 rounded-lg w-52 animate-on-scroll fade-in-up glass-card flex flex-col items-center" style="transition-delay: 400ms;">
+                        <i data-lucide="folder-sync" class="w-12 h-12 text-sky-400 mb-3"></i>
+                        <h3 class="font-bold">2. Session Structuring</h3>
+                        <p class="text-sm text-slate-400 mt-1">Events are grouped into a user session and stored in Firebase Firestore for persistence.</p>
+                    </div>
+                    <div class="arch-arrow p-2 animate-on-scroll fade-in-up" style="transition-delay: 500ms;"></div>
+                    <div class="p-6 rounded-lg w-52 animate-on-scroll fade-in-up glass-card flex flex-col items-center" style="transition-delay: 600ms;">
+                        <i data-lucide="file-spreadsheet" class="w-12 h-12 text-sky-400 mb-3"></i>
+                        <h3 class="font-bold">3. CSV Conversion</h3>
+                        <p class="text-sm text-slate-400 mt-1">The structured session data is flattened and converted into a downloadable CSV file.</p>
+                    </div>
+                     <div class="arch-arrow p-2 animate-on-scroll fade-in-up" style="transition-delay: 700ms;"></div>
+                    <div class="p-6 rounded-lg w-52 animate-on-scroll fade-in-right glass-card flex flex-col items-center" style="transition-delay: 800ms;">
+                        <i data-lucide="table-2" class="w-12 h-12 text-sky-400 mb-3"></i>
+                        <h3 class="font-bold">4. ML-Ready Data</h3>
+                        <p class="text-sm text-slate-400 mt-1">The final CSV is formatted and ready for feature engineering in Google Colab.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Interactive Module Hub Section -->
+        <section id="modules" class="bg-slate-950/80 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Core Project Modules</h2>
+                 <p class="mt-4 text-center text-slate-400 max-w-3xl mx-auto animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                    The project is broken down into four distinct, interconnected modules. Click on an icon to learn more about its role in the system.
+                </p>
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <a href="#module-1-detail" class="flex flex-col items-center text-center p-6 rounded-xl glass-card animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="gamepad-2" class="w-10 h-10 text-sky-300"></i></div>
+                        <h3 class="font-semibold text-lg text-white">UI & Gameplay</h3>
+                        <p class="text-sm text-slate-400 mt-1">The user-facing game interface.</p>
+                    </a>
+                    <a href="#module-2-detail" class="flex flex-col items-center text-center p-6 rounded-xl glass-card animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="database" class="w-10 h-10 text-sky-300"></i></div>
+                        <h3 class="font-semibold text-lg text-white">Data Persistence</h3>
+                        <p class="text-sm text-slate-400 mt-1">Handles saving data to Firebase.</p>
+                    </a>
+                    <a href="#module-3-detail" class="flex flex-col items-center text-center p-6 rounded-xl glass-card animate-on-scroll" style="transition-delay: 400ms;">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="brain-circuit" class="w-10 h-10 text-sky-300"></i></div>
+                        <h3 class="font-semibold text-lg text-white">AI Integration</h3>
+                        <p class="text-sm text-slate-400 mt-1">Connects to the Gemini API.</p>
+                    </a>
+                    <a href="#module-4-detail" class="flex flex-col items-center text-center p-6 rounded-xl glass-card animate-on-scroll" style="transition-delay: 500ms;">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="download-cloud" class="w-10 h-10 text-sky-300"></i></div>
+                        <h3 class="font-semibold text-lg text-white">Data Export</h3>
+                        <p class="text-sm text-slate-400 mt-1">Converts data to CSV for analysis.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- START OF DETAILED MODULES SECTION -->
+        <div id="modules-detailed">
+            <!-- Module 1 -->
+            <section id="module-1-detail">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col items-center text-center animate-on-scroll fade-in-up">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="gamepad-2" class="w-10 h-10 text-sky-300"></i></div>
+                        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Module 1: UI & Gameplay</h2>
+                    </div>
+                    <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                        <p>The user-facing web application, built with HTML, CSS, and native JavaScript. This module's primary role is to provide an engaging experience through a suite of cognitive games. It handles all visual rendering, manages game state (scores, timers, accuracy), and captures detailed behavioral metrics—like decision paths in narrative games, time-to-completion for puzzles, and hit/miss ratios—which serve as the raw data for our analysis.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Module 2 -->
+            <section id="module-2-detail" class="bg-slate-950/80 backdrop-blur-sm">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col items-center text-center animate-on-scroll fade-in-up">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="database" class="w-10 h-10 text-sky-300"></i></div>
+                        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Module 2: Data Persistence</h2>
+                    </div>
+                    <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                        <p>This module acts as the backend logic within the frontend. It structures the raw event data into a cohesive, session-based NoSQL format. Using the Firebase SDK, it sends this structured data to a Firestore database. This ensures every game session is securely and persistently stored in the cloud, making the data accessible for later analysis and export. The real-time nature of Firestore also opens possibilities for future live features.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Module 3 -->
+            <section id="module-3-detail">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col items-center text-center animate-on-scroll fade-in-up">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="brain-circuit" class="w-10 h-10 text-sky-300"></i></div>
+                        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Module 3: AI Integration</h2>
+                    </div>
+                    <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                        <p>This module enhances gameplay by connecting to the Google Gemini API. Its main function is to facilitate dynamic content generation. For instance, in the "Dream Weaver" game, the module sends the user's narrative choices to the Gemini API, which then returns a unique, contextually relevant continuation of the story. This creates a more personalized and unpredictable experience, increasing user engagement.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Module 4 -->
+            <section id="module-4-detail" class="bg-slate-950/80 backdrop-blur-sm">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col items-center text-center animate-on-scroll fade-in-up">
+                        <div class="p-4 bg-sky-900/50 rounded-xl mb-4"><i data-lucide="download-cloud" class="w-10 h-10 text-sky-300"></i></div>
+                        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Module 4: Data Export & Analysis</h2>
+                    </div>
+                    <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
+                        <p>The crucial bridge between data collection and machine learning. This module contains the client-side JavaScript logic that allows the user to download their gameplay data. It fetches the session data from Firebase, "flattens" the nested JSON structure into a two-dimensional format suitable for a spreadsheet, and converts it into a universally compatible CSV file. This exported file is the final, clean dataset ready for analysis in Google Colab.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- END OF DETAILED MODULES SECTION -->
+
+        <!-- Tech Stack -->
+        <section id="tech-stack">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Technology Stack</h2>
+                <div class="mt-12 grid grid-cols-3 md:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 100ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" class="h-14 w-14"></div><p class="mt-2 font-semibold">HTML5</p></div>
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 200ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" class="h-14 w-14"></div><p class="mt-2 font-semibold">CSS3</p></div>
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 300ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" class="h-12 w-12 rounded-lg"></div><p class="mt-2 font-semibold">JavaScript</p></div>
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 400ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg" class="h-14 w-14"></div><p class="mt-2 font-semibold">Firebase</p></div>
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 500ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://colab.research.google.com/img/colab_favicon_256px.png" class="h-14 w-14"></div><p class="mt-2 font-semibold">Google Colab</p></div>
+                    <div class="flex flex-col items-center animate-on-scroll" style="transition-delay: 600ms;"><div class="h-24 w-24 rounded-full shadow-md bg-sky-500/20 flex items-center justify-center tech-icon"><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" class="h-10"></div><p class="mt-2 font-semibold">Gemini API</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section id="architecture" class="bg-slate-950/80 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Project Architecture</h2>
+                <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <div class="p-6 rounded-lg shadow-lg w-48 animate-on-scroll fade-in-left glass-card"><h3 class="font-bold">1. Mindful Play Game</h3><p class="text-sm">User plays games, generating behavioral data.</p></div>
                     <div class="arch-arrow p-2 animate-on-scroll fade-in-up" style="transition-delay: 300ms;"></div>
                     <div class="p-6 rounded-lg shadow-lg w-48 animate-on-scroll fade-in-up glass-card" style="transition-delay: 400ms;"><h3 class="font-bold">2. Firebase</h3><p class="text-sm">Session data is saved to Firestore database.</p></div>
                     <div class="arch-arrow p-2 animate-on-scroll fade-in-up" style="transition-delay: 500ms;"></div>
@@ -240,45 +345,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- 8th Slide: Modules Identified -->
-        <section id="modules" class="bg-gray-900">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Modules Identified</h2>
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="p-6 rounded-lg shadow-md interactive-card animate-on-scroll fade-in-left glass-card" style="transition-delay: 200ms;">
-                        <h3 class="font-bold text-lg text-sky-400">1. User Interface & Gameplay Module</h3>
-                        <p class="mt-2 text-slate-300">Includes the welcome screen, game hub, and all individual game logic. Responsible for presenting the games and capturing user interactions in real-time.</p>
-                    </div>
-                    <div class="p-6 rounded-lg shadow-md interactive-card animate-on-scroll fade-in-right glass-card" style="transition-delay: 300ms;">
-                        <h3 class="font-bold text-lg text-sky-400">2. Data Management Module</h3>
-                        <p class="mt-2 text-slate-300">Handles the collection of gameplay data into a structured object. Manages saving this data to either Firebase Firestore (online) or Local Storage (offline).</p>
-                    </div>
-                    <div class="p-6 rounded-lg shadow-md interactive-card animate-on-scroll fade-in-left glass-card" style="transition-delay: 400ms;">
-                        <h3 class="font-bold text-lg text-sky-400">3. AI Integration Module</h3>
-                        <p class="mt-2 text-slate-300">Contains the logic for making API calls to the Gemini API. This includes generating dynamic story content and providing personalized user feedback.</p>
-                    </div>
-                    <div class="p-6 rounded-lg shadow-md interactive-card animate-on-scroll fade-in-right glass-card" style="transition-delay: 500ms;">
-                        <h3 class="font-bold text-lg text-sky-400">4. Data Export & Analysis Module</h3>
-                        <p class="mt-2 text-slate-300">Responsible for converting the collected session data into a flattened CSV format for download. This module prepares the data for the final machine learning phase in Google Colab.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9th Slide: Conclusion -->
-        <section id="conclusion">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">Conclusion</h2>
-                <div class="mt-8 prose prose-lg text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-                    <p>This project presents a novel and practical approach to mental health screening by leveraging the engaging nature of games to collect rich behavioral data. By building upon established research that validates the use of machine learning for this purpose, we aim to create a tool that is not only effective but also highly accessible and user-friendly.</p>
-                    <p>The successful completion of this project will result in a functional prototype, a unique dataset of gameplay behavior, and a trained machine learning model capable of predicting anxiety and depression scores. This work has the potential to contribute meaningfully to the field of digital health by offering a new, less intrusive method for early mental health risk detection.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 10th Slide: References -->
-        <section id="references" class="bg-gray-900">
+        
+        <!-- References Section -->
+        <section id="references">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl text-center animate-on-scroll fade-in-up">References</h2>
                 <div class="mt-8 prose prose-base text-slate-300 max-w-none animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
@@ -291,8 +360,8 @@
             </div>
         </section>
 
-        <!-- New Prototype Section -->
-        <section id="prototype">
+        <!-- Prototype Section -->
+        <section id="prototype" class="bg-slate-950/80 backdrop-blur-sm">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl animate-on-scroll fade-in-up">Try the Prototype</h2>
                 <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto animate-on-scroll fade-in-up" style="transition-delay: 200ms;">The best way to understand the project is to experience it. The "Mindful Play" game suite is a functional prototype that collects behavioral data and saves it to a live database.</p>
@@ -313,6 +382,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
@@ -391,7 +462,6 @@
                 camera.updateProjectionMatrix();
             });
 
-            // GSAP Scroll Animations
             gsap.to(camera.position, {
                 z: 2.5,
                 scrollTrigger: {
@@ -470,3 +540,5 @@
     </script>
 </body>
 </html>
+
+
